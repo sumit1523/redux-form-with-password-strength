@@ -15,7 +15,7 @@ class PasswordStrengthMeter extends Component {
     }
     let barLength = 0;
     Object.entries(colorBar).forEach(entry => {
-      if (entry[1] == true) {
+      if (entry[1] === true) {
         barLength += 1;
       }
     });

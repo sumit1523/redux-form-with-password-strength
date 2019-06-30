@@ -21,6 +21,7 @@ class SyncValidationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      hidden: true,
       colorBar: {
         length: false,
         character: false,
@@ -28,6 +29,10 @@ class SyncValidationForm extends Component {
         number: false
       }
     }
+  }
+
+  toggleShow = () => {
+    this.setState({ hidden: !this.state.hidden });
   }
 
   handlePasswordChange = (event) => {
@@ -65,8 +70,9 @@ class SyncValidationForm extends Component {
         <form onSubmit={handleSubmit}>
           <Field name="username" type="text" component={renderField} label="Username" />
           <Field name="email" type="email" component={renderField} label="Email" />
-          <Field name="password" type="password" component={renderField} label="Password"
+          <Field name="password" type={this.state.hidden ? "password" : "text"} component={renderField} label="Password"
             onChange={(event) => this.handlePasswordChange(event)} />
+            <button onClick={this.toggleShow}>Show / Hide</button>
           <PasswordToolTip colorBar={colorBar} />
           <PasswordStrengthMeter colorBar={colorBar} />
           <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" />
