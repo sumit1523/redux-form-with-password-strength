@@ -44,7 +44,7 @@ class SyncValidationForm extends Component {
       symbol: false,
       number: false
     }
-    
+
     if (password.match(/[A-Z]/) && password.match(/[a-z]/)) {
       colorBar.character = true;
     } if (password.match(/[0-9]/)) {
@@ -71,7 +71,6 @@ class SyncValidationForm extends Component {
             onChange={(event) => this.handlePasswordChange(event)} />
           <PasswordToolTip colorBar={colorBar} />
           <PasswordStrengthMeter colorBar={colorBar} />
-
           <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" />
           <div>
             <button type="submit" disabled={submitting}>Submit</button>
