@@ -8,10 +8,6 @@ class PasswordStrengthMeter extends Component {
     const { colorBar } = this.props;
     console.log("total entries:-", colorBar)
     let status = '';
-    const divStyle = {
-      barlength: "barlength"
-
-    };
     let color = {
       bar1: "gray",
       bar2: "gray",
@@ -85,7 +81,7 @@ class PasswordStrengthMeter extends Component {
     return (
       <>
         <div className="barmenu">
-          <div style={divStyle} className={color.bar1} >
+          <div className={color.bar1} >
             test1
           </div>
           <div className={color.bar2}>

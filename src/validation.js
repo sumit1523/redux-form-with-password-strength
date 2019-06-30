@@ -12,6 +12,9 @@ export const validate = (values) => {
     } else if (!regX(getEmailKey, values.email)) {
       errors.email = 'Invalid email address'
     }
+    if (!values.password) {
+      errors.password = 'Required'
+    }
     if (values.password === values.retypepassword) {
       errors.retypepassword = 'password Matched'
     } else {
