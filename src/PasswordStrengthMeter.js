@@ -8,6 +8,7 @@ class PasswordStrengthMeter extends Component {
 
   render() {
 const {colorBar}=this.props;
+let status='';
 let color={
     bar1:"gray",
     bar2:"gray",
@@ -30,6 +31,7 @@ case 0:{
     bar3:"gray",
     bar4:"gray"
 }
+
 break;
 }
 case 1:{
@@ -39,6 +41,7 @@ case 1:{
     bar3:"gray",
     bar4:"gray"
 }
+status=" varyweak"
 break;
 }
 case 2:{
@@ -48,6 +51,7 @@ case 2:{
     bar3:"gray",
     bar4:"gray"
 }
+status=" weak"
 break;
 
 }
@@ -58,6 +62,7 @@ case 3:{
     bar3:"yellow",
     bar4:"gray"
 }
+status="good"
 break;
 }
 case 4:{
@@ -67,6 +72,7 @@ case 4:{
     bar3:"green",
     bar4:"green"
 }
+status="strong"
 break;
 
 }
@@ -90,6 +96,8 @@ break;
           test4
           </div>
 
+<div>{status}
+</div>
       </div>
       </>
     );
