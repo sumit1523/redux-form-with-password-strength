@@ -89,7 +89,12 @@ export default class PasswordToolTip extends Component {
                 <div className="text-content">
                     <h3>Fade in Effect</h3>
                     <ul>
-                
+                    <input 
+                    className="b-TextInput"
+                    type="password"
+                    value={this.state.password}
+                    onChange={(event) => this.handlePasswordChange(event)}
+                  /> 
                         <li className={this.state.color ? "green" : "red"}>{a}-This demo has fade in/out effect.</li>
                         <li>It is using CSS opacity, visibility, and transition property to toggle the tooltip.</li>
                         <li>Other demos are using display property<em>(none or block)</em> for the toggle.</li>
