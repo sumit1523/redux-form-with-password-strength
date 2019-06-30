@@ -12,17 +12,6 @@ export const validate = (values) => {
     } else if (!regX(getEmailKey, values.email)) {
       errors.email = 'Invalid email address'
     }
-    if (!values.password) {
-      errors.password = 'Required'
-    } else if (!values.password.match(/[A-Z]/)) {
-      errors.password = 'Password must contains at least one upper case character'
-    } else if (!values.password.match(/[a-z]/)) {
-      errors.password = 'Password must contains at least one lower case character'
-    } else if (!values.password.match(/[!,?,@,#,$,%,^,&,*,=,(,),_,.]{1}/)) {
-      errors.password = 'Password must contains at least one special character'
-    } else if (values.password.length < 8 ) {
-      errors.password = 'Password must be more than 8 characters'
-    }
     if (values.password === values.retypepassword) {
       errors.retypepassword = 'password Matched'
     } else {
@@ -33,7 +22,6 @@ export const validate = (values) => {
 
   /*@Common funcation for Regex for form validation*/
   const regX = (valdnType, valdnValue) => {
-    
     if(valdnType === 'email') { 
       return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(valdnValue);
     }
