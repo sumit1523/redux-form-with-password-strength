@@ -1,10 +1,9 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import './login.css';
 import { validate } from './validation';
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import './PasswordStrengthMeter.css';
-
 import PasswordToolTip from './PasswordToolTip';
 
 
@@ -19,6 +18,10 @@ const renderField = ({ input, label, type, meta: { touched, error} }) => (
   </div>
 );
 
+const pwdtooltip =()=>{
+ 
+
+}
 const SyncValidationForm = (props) => {
   const { handleSubmit, pristine, reset, submitting } = props;
   return (
@@ -27,9 +30,9 @@ const SyncValidationForm = (props) => {
       <form onSubmit={handleSubmit}>
         <Field name="username" type="text" component={renderField} label="Username"/>
         <Field name="email" type="email" component={renderField} label="Email" />
-        <Field id="progresspwd" name="password" type="password"  component={renderField} label="Password" />  
-        <PasswordToolTip a='SUMIT'/>
+        <Field id="progresspwd" name="password" type="password" onClick={ pwdtooltip}  component={renderField} label="Password" />  
         <PasswordStrengthMeter />
+        <PasswordToolTip a='SUMIT' />
         <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" />
         <div>
           <button type="submit" disabled={submitting}>Submit</button>

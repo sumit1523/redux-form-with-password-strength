@@ -30,7 +30,7 @@ class SignUpForm extends Component {
       
       // Check for special characters
       checkSpecialCharacters = (password) => {
-        const pattern = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g;
+        const pattern = /[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/g;
           if (pattern.test(password)) {
           this.setState({
             specialCharValid: true
@@ -120,10 +120,10 @@ class SignUpForm extends Component {
                 </div>
                 <div>
                   <label 
-                    className={`b-TextInput__label--left ${this.state.match == false ? 'error-msg' : null}`}
+                    className={`b-TextInput__label--left ${this.state.match === false ? 'error-msg' : null}`}
                     >Confirm Password</label>
                   <input
-                    className={`b-TextInput${ this.state.match == false ? '--error' : ''}`}
+                    className={`b-TextInput${ this.state.match === false ? '--error' : ''}`}
                     type="password"
                     value={this.state.confirmPassword}
                     onChange={(event) => this.handleConfirmPasswordChange(event)}
