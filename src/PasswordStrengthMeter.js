@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './PasswordStrengthMeter.css';
-// import zxcvbn from 'zxcvbn';
 
 class PasswordStrengthMeter extends Component {
 
   render() {
     const { colorBar } = this.props;
-    console.log("total entries:-", colorBar)
+    // console.log("total entries:-", colorBar);
     let status = '';
     let color = {
       bar1: "gray",
@@ -20,7 +19,7 @@ class PasswordStrengthMeter extends Component {
         barLength += 1;
       }
     });
-    console.log("total validation:-", barLength);
+    // console.log("total validation:-", barLength);
     switch (barLength) {
       case 0: {
         color = {

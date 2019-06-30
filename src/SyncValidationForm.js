@@ -21,8 +21,6 @@ class SyncValidationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
-      color: false,
       colorBar: {
         length: false,
         character: false,
@@ -33,7 +31,7 @@ class SyncValidationForm extends Component {
   }
 
   handlePasswordChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     this.checkValidation(event.target.value)
   };
 
@@ -67,7 +65,7 @@ class SyncValidationForm extends Component {
         <form onSubmit={handleSubmit}>
           <Field name="username" type="text" component={renderField} label="Username" />
           <Field name="email" type="email" component={renderField} label="Email" />
-          <Field id="progresspwd" name="password" type="password" component={renderField} label="Password"
+          <Field name="password" type="password" component={renderField} label="Password"
             onChange={(event) => this.handlePasswordChange(event)} />
           <PasswordToolTip colorBar={colorBar} />
           <PasswordStrengthMeter colorBar={colorBar} />
