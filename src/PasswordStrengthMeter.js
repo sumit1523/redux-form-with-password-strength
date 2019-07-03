@@ -3,72 +3,49 @@ import './PasswordStrengthMeter.css';
 
 class PasswordStrengthMeter extends Component {
 
+changeColor=(numberColor,characterColor,symbolColor,lengthColor)=>{
+return {
+    numberColor,
+    characterColor,
+    symbolColor,
+    lengthColor
+}
+}
   render() {
     const { colorBar } = this.props;
     // console.log("total entries:-", colorBar);
     let status = '';
-    let color = {
-      bar1: "gray",
-      bar2: "gray",
-      bar3: "gray",
-      bar4: "gray"
-    }
-    let barLength = 0;
-    Object.entries(colorBar).forEach(entry => {
-      if (entry[1] === true) {
-        barLength += 1;
-      }
-    });
+    let color = '';
+    let barLength =  Object.entries(colorBar).filter(entry => entry[1]).length
+
+
     // console.log("total validation:-", barLength);
     switch (barLength) {
       case 0: {
-        color = {
-          bar1: "gray",
-          bar2: "gray",
-          bar3: "gray",
-          bar4: "gray"
-        }
+       color = this.changeColor("gray","gray","gray","gray");
 
         break;
       }
       case 1: {
-        color = {
-          bar1: "red",
-          bar2: "gray",
-          bar3: "gray",
-          bar4: "gray"
-        }
+        color = this.changeColor("red","gray","gray","gray");
         status = " veryweak"
         break;
       }
       case 2: {
-        color = {
-          bar1: "orange",
-          bar2: "orange",
-          bar3: "gray",
-          bar4: "gray"
-        }
+        color = this.changeColor("orange","orange","gray","gray");
         status = " weak"
         break;
 
       }
       case 3: {
-        color = {
-          bar1: "yellow",
-          bar2: "yellow",
-          bar3: "yellow",
-          bar4: "gray"
-        }
+                color = this.changeColor("yellow","yellow","yellow","gray");
+
         status = "good"
         break;
       }
       case 4: {
-        color = {
-          bar1: "green",
-          bar2: "green",
-          bar3: "green",
-          bar4: "green"
-        }
+               color = this.changeColor("green","green","green","green");
+
         status = "strong"
         break;
 
@@ -80,16 +57,16 @@ class PasswordStrengthMeter extends Component {
     return (
       <>
         <div className="barmenu">
-          <div className={color.bar1} >
+          <div className={color.numberColor} >
             test1
           </div>
-          <div className={color.bar2}>
+          <div className={color.characterColor}>
             test2
           </div>
-          <div className={color.bar3}>
+          <div className={color.symbolColor}>
             test3
           </div>
-          <div className={color.bar4}>
+          <div className={color.lengthColor}>
             test4
           </div>
         </div>
