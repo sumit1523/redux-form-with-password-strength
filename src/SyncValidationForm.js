@@ -19,10 +19,25 @@ class SyncValidationForm extends Component {
     super(props);
     this.state = {
         hidden: true,
-        showHide: false
+        showHide: false,
+        password:'',
+        confirmPassword:''
     }
 }
 
+updatePassword=(password)=>
+{
+this.setState({
+password
+})
+}
+updateConfirmPassword=(confirmPassword)=>
+{
+    console.log(confirmPassword)
+this.setState({
+confirmPassword
+})
+}
 toggleShow = () => {
   this.setState({
       hidden: !this.state.hidden,
@@ -37,9 +52,9 @@ toggleShow = () => {
         <form onSubmit={handleSubmit}>
           <Field name="username" type="text" component={renderField} label="Username" />
           <Field name="email" type="email" component={renderField} label="Email" />
-          <Field name="password" type={this.state.hidden ? "password" : "text"} component={passwordStregthField} label="Password" />
+          <Field name="password" type={this.state.hidden ? "password" : "text"} component={passwordStregthField} label="Password" updatePassword={this.updatePassword}/>
           <button onClick={this.toggleShow}>{this.state.showHide ? 'Hide':'Show'}</button>
-          <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" />
+          <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" onChange={(e)=>this.updateConfirmPassword(e.target.value)} />
           <div>
             <button type="submit" disabled={submitting}>Submit</button>
             <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
