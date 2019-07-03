@@ -21,15 +21,24 @@ class SyncValidationForm extends Component {
         hidden: true,
         showHide: false,
         password:'',
-        confirmPassword:''
+        confirmPassword:'',
+        isSamePassword:false
+
     }
 }
 
+checkSamePassword=()=>{
+    let isSamePassword= this.state.password===this.state.confirmPassword?false:true;
+    this.setState({
+        isSamePassword
+    })
+}
 updatePassword=(password)=>
 {
 this.setState({
 password
 })
+this.checkSamePassword();
 }
 updateConfirmPassword=(confirmPassword)=>
 {
@@ -37,6 +46,7 @@ updateConfirmPassword=(confirmPassword)=>
 this.setState({
 confirmPassword
 })
+this.checkSamePassword();
 }
 toggleShow = () => {
   this.setState({
@@ -52,13 +62,14 @@ toggleShow = () => {
         <form onSubmit={handleSubmit}>
           <Field name="username" type="text" component={renderField} label="Username" />
           <Field name="email" type="email" component={renderField} label="Email" />
-          <Field name="password" type={this.state.hidden ? "password" : "text"} component={passwordStregthField} label="Password" updatePassword={this.updatePassword}/>
+          <Field name="password" type={this.state.hidden ? "password" : "text"} component={passwordStregthField} label="Password" onChange={(e)=>this.updatePassword(e.target.value)}/>
           <button onClick={this.toggleShow}>{this.state.showHide ? 'Hide':'Show'}</button>
           <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" onChange={(e)=>this.updateConfirmPassword(e.target.value)} />
           <div>
             <button type="submit" disabled={submitting}>Submit</button>
             <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
           </div>
+          {this.state.isSamePassword &&<div>heyyy</div>}
         </form>
       </div>
     )

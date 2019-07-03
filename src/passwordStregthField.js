@@ -48,7 +48,6 @@ class passwordStregthField extends Component {
     render() {
         const { colorBar } = this.state;
         const { input: { value, onChange }, label, type, meta: { touched, error },test } = this.props;
-        console.log(test)
         return(
             <div>
                 <label>{label}</label>
@@ -56,7 +55,6 @@ class passwordStregthField extends Component {
                     <input  placeholder={label} type={type}
                     onChange={(e)=>{
                     this.handlePasswordChange(e)
-                    this.props.updatePassword(e.target.value)
                     return value}} />
                     {touched &&
                         ((error && <span>{error}</span>))}
