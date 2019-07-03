@@ -5,7 +5,6 @@ class PasswordStrengthMeter extends Component {
 
   render() {
     const { colorBar } = this.props;
-    // console.log("total entries:-", colorBar);
     let status = '';
     let color = {
       bar1: "gray",
@@ -13,14 +12,11 @@ class PasswordStrengthMeter extends Component {
       bar3: "gray",
       bar4: "gray"
     }
-    let barLength = 0;
-    Object.entries(colorBar).forEach(entry => {
-      if (entry[1] === true) {
-        barLength += 1;
-      }
-    });
-    // console.log("total validation:-", barLength);
-    switch (barLength) {
+    const getAmountOfRequrement = () => {
+      return Object.entries(colorBar).filter(entry => entry[1]).length
+    }
+
+    switch (getAmountOfRequrement()) {
       case 0: {
         color = {
           bar1: "gray",
