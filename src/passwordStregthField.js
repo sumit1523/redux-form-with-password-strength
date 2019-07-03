@@ -6,7 +6,6 @@ class passwordStregthField extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hidden: true,
             colorBar: {
                 length: false,
                 character: false,
@@ -16,11 +15,6 @@ class passwordStregthField extends Component {
         }
     }
 
-    toggleShow = () => {
-        this.setState({
-            hidden: !this.state.hidden
-        });
-    }
 
     handlePasswordChange = (event) => {
         this.checkValidation(event.target.value);
@@ -60,7 +54,6 @@ class passwordStregthField extends Component {
                 <div>
                     <input {...input} placeholder={label} type={type} 
                     onChange={(event) => this.handlePasswordChange(event)} />
-                    <button onClick={this.toggleShow}>Show / Hide</button>
                     {touched &&
                         ((error && <span>{error}</span>))}
                 </div>

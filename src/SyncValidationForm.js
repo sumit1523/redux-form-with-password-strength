@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import './login.css';
 import { validate } from './validation';
 import passwordStregthField from './passwordStregthField';
 
@@ -16,17 +15,30 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 );
 
 class SyncValidationForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        hidden: true,
+        showHide: false
+    }
+}
 
+toggleShow = () => {
+  this.setState({
+      hidden: !this.state.hidden,
+      showHide: !this.state.showHide
+  });
+}
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
-    const { hidden } = this.props;
     return (
       <div>
         <h2> Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <Field name="username" type="text" component={renderField} label="Username" />
           <Field name="email" type="email" component={renderField} label="Email" />
-          <Field name="password" type={hidden ? "password" : "text"} component={passwordStregthField} label="Password" />
+          <Field name="password" type={this.state.hidden ? "password" : "text"} component={passwordStregthField} label="Password" />
+          <button onClick={this.toggleShow}>{this.state.showHide ? 'Hide':'Show'}</button>
           <Field name="retypepassword" type="password" component={renderField} label="Confirm-Password" />
           <div>
             <button type="submit" disabled={submitting}>Submit</button>
