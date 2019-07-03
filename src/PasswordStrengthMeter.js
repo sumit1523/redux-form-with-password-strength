@@ -23,7 +23,6 @@ return {
     switch (barLength) {
       case 0: {
        color = this.changeColor("gray","gray","gray","gray");
-
         break;
       }
       case 1: {
@@ -39,13 +38,11 @@ return {
       }
       case 3: {
                 color = this.changeColor("yellow","yellow","yellow","gray");
-
         status = "good"
         break;
       }
       case 4: {
                color = this.changeColor("green","green","green","green");
-
         status = "strong"
         break;
 
