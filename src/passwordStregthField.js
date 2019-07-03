@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import PasswordToolTip from './PasswordToolTip';
 
@@ -14,8 +14,7 @@ class passwordStregthField extends Component {
             }
         }
     }
-
-
+    
     handlePasswordChange = (event) => {
         this.checkValidation(event.target.value);
         console.log(event.target.value)
@@ -47,15 +46,16 @@ class passwordStregthField extends Component {
     }
     render() {
         const { colorBar } = this.state;
-        const { input: { value, onChange }, label, type, meta: { touched, error },test } = this.props;
-        return(
+        const { input: { value }, label, type, meta: { touched, error } } = this.props;
+        return (
             <div>
                 <label>{label}</label>
                 <div>
-                    <input  placeholder={label} type={type}
-                    onChange={(e)=>{
-                    this.handlePasswordChange(e)
-                    return value}} />
+                    <input placeholder={label} type={type}
+                        onChange={(e) => {
+                            this.handlePasswordChange(e)
+                            return value
+                        }} />
                     {touched &&
                         ((error && <span>{error}</span>))}
                 </div>
@@ -64,7 +64,6 @@ class passwordStregthField extends Component {
             </ div>
         )
     }
-
 }
 
 export default passwordStregthField;
