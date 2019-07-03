@@ -47,13 +47,15 @@ class passwordStregthField extends Component {
     }
     render() {
         const { colorBar } = this.state;
-        const { input, label, type, meta: { touched, error } } = this.props;
+        const { input: { value, onChange }, label, type, meta: { touched, error } } = this.props;
         return(
             <div>
                 <label>{label}</label>
                 <div>
-                    <input {...input} placeholder={label} type={type} 
-                    onChange={(event) => this.handlePasswordChange(event)} />
+                    <input  placeholder={label} type={type}
+                    onChange={(e)=>{
+                    this.handlePasswordChange(e)
+                    return value}} />
                     {touched &&
                         ((error && <span>{error}</span>))}
                 </div>
@@ -62,7 +64,7 @@ class passwordStregthField extends Component {
             </ div>
         )
     }
-    
+
 }
 
 export default passwordStregthField;
