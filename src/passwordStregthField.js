@@ -3,61 +3,26 @@ import PasswordStrengthMeter from './PasswordStrengthMeter';
 import PasswordToolTip from './PasswordToolTip';
 
 class passwordStregthField extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            colorBar: {
-                length: false,
-                character: false,
-                symbol: false,
-                number: false
-            }
-        }
+    state = {
+        passwordVisible: false,
     }
     
-    handlePasswordChange = (event) => {
-        this.checkValidation(event.target.value);
-        console.log(event.target.value)
-    };
-
-    checkValidation = (password) => {
-        const colorBar = {
-            length: false,
-            character: false,
-            symbol: false,
-            number: false
-        }
-
-        if (password.match(/[A-Z]/) && password.match(/[a-z]/)) {
-            colorBar.character = true;
-        }
-        if (password.match(/[0-9]/)) {
-            colorBar.number = true;
-        }
-        if (password.match(/[!,?,@,#,$,%,^,&,*,=,(,),_,.]{1}/)) {
-            colorBar.symbol = true;
-        }
-        if (password.length > 8) {
-            colorBar.length = true;
-        }
+    toggleShow = () => {
         this.setState({
-            colorBar
-        })
+            passwordVisible: !this.state.passwordVisible,
+        });
     }
+
     render() {
-        const { colorBar } = this.state;
-        const { input: { value }, label, type, meta: { touched, error } } = this.props;
+        const { colorBar } = this.props;
+        const { input, label, meta: { touched, error } } = this.props;
         return (
             <div>
                 <label>{label}</label>
                 <div>
-                    <input placeholder={label} type={type}
-                        onChange={(e) => {
-                            this.handlePasswordChange(e)
-                            return value
-                        }} />
-                    {touched &&
-                        ((error && <span>{error}</span>))}
+                    <input {...input} placeholder={label} type={this.state.passwordVisible ? "text" : "password"} />
+                    <button type ="button" onClick={this.toggleShow}>{this.state.passwordVisible ? 'Hide' : 'Show'}</button>
+                    {touched && ((error && <span>{error}</span>))}
                 </div>
                 <PasswordToolTip colorBar={colorBar} />
                 <PasswordStrengthMeter colorBar={colorBar} />
