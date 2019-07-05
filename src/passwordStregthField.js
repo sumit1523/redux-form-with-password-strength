@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import PasswordToolTip from './PasswordToolTip';
 
+
 class passwordStregthField extends Component {
     state = {
         passwordVisible: false,
     }
-    
     toggleShow = () => {
         this.setState({
             passwordVisible: !this.state.passwordVisible,
