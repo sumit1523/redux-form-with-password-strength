@@ -24,8 +24,8 @@ class passwordStregthField extends Component {
                     <button type ="button" onClick={this.toggleShow}>{this.state.passwordVisible ? 'Hide' : 'Show'}</button>
                     {touched && ((error && <span>{error}</span>))}
                 </div>
-                <PasswordToolTip colorBar={colorBar} />
                 <PasswordStrengthMeter colorBar={colorBar} />
+                <PasswordToolTip colorBar={colorBar} />
             </ div>
         )
     }

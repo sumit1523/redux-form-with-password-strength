@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './PasswordStrengthMeter.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
 class PasswordStrengthMeter extends Component {
 
   changeColor = (numberColor, characterColor, symbolColor, lengthColor) => {
@@ -45,20 +45,20 @@ class PasswordStrengthMeter extends Component {
     }
     return (
       <>
-        <div className="barmenu">
-          <div className={color.numberColor} >
-            test1
-          </div>
-          <div className={color.characterColor}>
-            test2
-          </div>
-          <div className={color.symbolColor}>
-            test3
-          </div>
-          <div className={color.lengthColor}>
-            test4
-          </div>
-        </div>
+        <ul className="list-inline mt-2">
+          <li className="w-25 float-left pr-1">
+            <span className={`progress ${color.numberColor} `}></span>
+          </li>
+          <li className="w-25 float-left pr-1">
+            <span className={`progress ${color.characterColor} `}></span>
+          </li>
+          <li className="w-25 float-left pr-1">
+            <span className={`progress ${color.symbolColor} `}></span>
+          </li>
+          <li className="w-25 float-left">
+            <span className={`progress ${color.lengthColor} `}></span>
+          </li>
+        </ul>
         <div>
           <div>{status}
           </div>
